@@ -16,8 +16,7 @@
   - Content-Security-Policy:self by default
 - [express-rate-limit](https://www.npmjs.com/package/express-rate-limit)
   - Limits allowed requests for each IP per a given time frame
-  - `backend/config/rateLimiter`
-- express.urlencoded
+  - `backend/config/rateLimiter.js`
 
 ## CORS
 - `backend/config/allowedOrigins`
