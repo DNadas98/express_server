@@ -3,6 +3,7 @@
 ## Routes
 
 - GET `/`: Index page
+- GET `/error`: Example 500 error as test
 
 ## Default port
 
