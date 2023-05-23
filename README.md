@@ -19,7 +19,7 @@
 - express.urlencoded
 
 ## CORS
-
+- `backend/config/allowedOrigins`
 - [Config documentation](https://expressjs.com/en/resources/middleware/cors.html#configuring-cors)
 - !origin option is unsafe! See config/corsOptions
   - This is only for developement (localhost: undefined origin)
