@@ -27,10 +27,6 @@ server.use(logger.logRequest);
 //Routing
 server.use("/", require("./routes/root.js"));
 
-//Package API
-server.use("/packages", require("./routes/api/packages.js"));
-server.use("/status", require("./routes/api/status.js"));
-
 //test error
 server.use("/error", (req, res, next) => {
   res.setHeader("Accepts", "text/html");
