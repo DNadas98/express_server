@@ -47,7 +47,7 @@
     "no-shadow": "warn",
     "no-undefined": "error",
     "no-unneeded-ternary": "warn",
-    //"no-unused-expressions": "warn",
+    "no-unused-expressions": "warn",
     "no-useless-return": "warn",
     "no-var": "warn",
     "no-void": "error",
@@ -60,12 +60,12 @@
     "require-await": "warn",
     "yoda": "warn",
     "arrow-parens": "warn",
-    //"brace-style": "warn",
+    "brace-style": "warn",
     //"comma-dangle": ["warn", "always-multiline"],
     //"comma-spacing": "warn",
     "comma-style": "warn",
     "eol-last": "warn",
-    //"indent": ["warn", 2],
+    "indent": ["warn", 2],
     //"keyword-spacing": "warn",
     /*"max-len": ["warn",    {
       "ignoreComments": true,
@@ -74,7 +74,7 @@
       "ignoreRegExpLiterals": true
     }],*/
     "no-trailing-spaces": "warn",
-    //"quotes": ["warn", "single"],
+    "quotes": ["warn", "double"],
     //"space-infix-ops": "warn",
     "space-unary-ops": "warn"
   }
