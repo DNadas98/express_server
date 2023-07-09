@@ -2,10 +2,10 @@ const helmetConfig = {
   contentSecurityPolicy: {
     directives: {
       defaultSrc: ["'self'"],
-      imgSrc: ["'self'", "https://avatars.githubusercontent.com/"],
+      imgSrc: ["'self'"],
       styleSrc: ["'self'", "'unsafe-inline'"],
       scriptSrc: ["'self'", "'unsafe-inline'", "'unsafe-eval'"],
-      connectSrc: ["'self'", `${process.env.FRONTEND_URL}/`, "https://api.github.com/"]
+      connectSrc: ["'self'"]
     }
   },
   hidePoweredBy: false,
