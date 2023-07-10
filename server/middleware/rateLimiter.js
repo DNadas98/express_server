@@ -10,6 +10,10 @@ const rateLimiter = rateLimit({
   handler: (req, res, next, options) => {
     logError(options, req);
     return res.status(403).json(options.message);
+  },
+  // eslint-disable-next-line no-unused-vars
+  skip: (req, res) => {
+    return req.ip === req.connection.remoteAddress;
   }
 });
 
