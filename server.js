@@ -1,5 +1,5 @@
 const path = require("path");
-require("dotenv").config({ path: path.join(__dirname, "config/config.env") });
+const fs = require("fs");
 const express = require("express");
 const helmet = require("helmet");
 const helmetConfig = require("./config/helmetConfig");
@@ -7,7 +7,14 @@ const rateLimiter = require("./middleware/rateLimiter");
 const banHandler = require("./middleware/banHandler");
 const cors = require("cors");
 const corsConfig = require("./config/corsConfig");
-const { logRequest, logServed, logError } = require("./middleware/logger");
+const {logRequest, logServed, logError} = require("./middleware/logger");
+
+//DotENV
+const envPath = path.join(__dirname, "config/config.env");
+if (!fs.existsSync(envPath)) {
+  throw new Error(".env file not found in the config directory");
+}
+require("dotenv").config({path: envPath});
 
 const server = express();
 
@@ -21,21 +28,21 @@ server.use(rateLimiter);
 server.use(banHandler);
 
 //Request parsing
-server.use(express.urlencoded({ extended: true }));
+server.use(express.urlencoded({extended: true}));
 server.use(express.json());
 
 //static
 //server.use("/static", express.static(path.join(__dirname, "/view/static")));
 
 //Request logger middleware
-server.use((req, res, next)=>{
+server.use((req, res, next) => {
   logRequest(req);
   next();
 });
 
 //Routing
 
-server.use("/test-error",(req,res,next)=>{
+server.use("/test-error", (req, res, next) => {
   throw new Error("Test error");
 });
 
@@ -45,7 +52,7 @@ server.use((req, res, next) => {
     res.status(404);
     logServed(req, res, next);
     if (req.accepts("application/json")) {
-      return res.json({ message: "Not Found" });
+      return res.json({message: "Not Found"});
     }
     return res.send("Not Found");
   } catch (e) {
@@ -61,7 +68,7 @@ server.use((err, req, res, next) => {
     res.status(500);
     logError(err, req, next);
     if (req.accepts("application/json")) {
-      return res.json({ message: "Internal Server Error" });
+      return res.json({message: "Internal Server Error"});
     }
     return res.send("Internal Server Error");
   } catch (e) {
