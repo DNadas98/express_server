@@ -7,7 +7,7 @@ This is a template repository for a basic Express.js server with built-in securi
 - Configurable CORS middleware using the [cors](https://www.npmjs.com/package/cors) package.
 - Loading environment variables from a .env file using [dotenv](https://www.npmjs.com/package/dotenv).
 - Use of built-in Express.js middleware for handling JSON and URL encoded requests.
-- Custom middleware for logging server events, such as requests, responses and errors.
+- Custom logger for logging server events, such as requests, responses and errors.
 - A simple setup to serve static files.
 - Error handling routes for testing, and serving 404 and 500 error pages.
 
