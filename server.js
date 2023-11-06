@@ -8,6 +8,8 @@ const banHandler = require("./middleware/banHandler");
 const cors = require("cors");
 const corsConfig = require("./config/corsConfig");
 const {logRequest, logServed, logError} = require("./middleware/logger");
+const mongoose = require("mongoose");
+const dbConnection = require("./model/dbConnection");
 
 //DotENV
 const envPath = path.join(__dirname, "config/config.env");
@@ -77,11 +79,13 @@ server.use((err, req, res, next) => {
   }
 });
 
-//Start server
-function start() {
+//Connect to database, start server
+async function start() {
   try {
+    await dbConnection();
+    console.log("Connected to database");
     server.listen(process.env.PORT, () => {
-      console.log(`Server running on port ${process.env.PORT}`);
+      console.log(`HTTP Server running on port ${process.env.PORT}`);
     });
   } catch (e) {
     console.error(e);
@@ -89,3 +93,8 @@ function start() {
 }
 
 start();
+
+//handle DB errors
+mongoose.connection.on("error", (err) => {
+  logError(err);
+});
